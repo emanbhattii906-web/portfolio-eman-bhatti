@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.5">
+  <title>Eman Liaqat · Portfolio</title>
+  <!-- Bootstrap 5 + Icons -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+  <!-- AOS -->
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+  <!-- Google Font -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; scroll-behavior: smooth; }
+    body {
+      font-family: 'Inter', sans-serif;
+      background: #f0f4fe;
+      color: #1a2639;
+      transition: background 0.3s, color 0.3s;
+    }
+    /* dark mode */
+    body.dark {
+      background: #0b1120;
+      color: #e8edf5;
+    }
+    body.dark .card, body.dark .glass, body.dark .skill-card, body.dark .cert-card, body.dark .project-card {
+      background: rgba(20, 30, 50, 0.7) !important;
+      backdrop-filter: blur(8px);
+      border: 1px solid rgba(255,255,255,0.08);
+      color: #e8edf5;
+    }
+    body.dark .nav-bar {
+      background: rgba(10, 18, 34, 0.9) !important;
+      backdrop-filter: blur(12px);
+    }
+    body.dark .hero-gradient {
+      background: linear-gradient(145deg, #0b1a2e, #122a44);
+    }
+    .nav-bar {
+      background: rgba(255,255,255,0.7);
+      backdrop-filter: blur(12px);
+      box-shadow: 0 4px 20px rgba(0,0,0,0.03);
+      transition: all 0.3s;
+      border-bottom: 1px solid rgba(0,0,0,0.02);
+    }
+    .nav-link { font-weight: 600; color: #1a2639; margin: 0 6px; transition: 0.2s; }
+    .nav-link:hover { color: #0b4b8a; }
+    body.dark .nav-link { color: #cdd9f0; }
+    body.dark .nav-link:hover { color: #7aa9ff; }
+
+    .hero-gradient {
+      background: linear-gradient(135deg, #e6edfe 0%, #d4e0fa 100%);
+      padding: 80px 0 60px;
+      transition: background 0.3s;
+    }
+    body.dark .hero-gradient {
+      background: linear-gradient(145deg, #0b1a2e, #122a44);
+    }
+    .profile-img {
+      width: 180px;
+      height: 180px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 5px solid white;
+      box-shadow: 0 20px 35px rgba(0,20,50,0.15);
+      background: #cbd8f0;
+    }
+    .btn-grad {
+      background: linear-gradient(145deg, #1a3b6b, #0f284a);
+      border: none;
+      color: white;
+      padding: 10px 28px;
+      border-radius: 40px;
+      font-weight: 600;
+      transition: 0.25s;
+      box-shadow: 0 6px 16px rgba(18, 52, 106, 0.25);
+    }
+    .btn-grad:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 12px 28px rgba(18, 52, 106, 0.4);
+      background: #1f4a7a;
+      color: white;
+    }
+    .btn-outline-light-custom {
+      border: 2px solid #1a3b6b;
+      color: #1a3b6b;
+      background: transparent;
+      border-radius: 40px;
+      padding: 10px 28px;
+      font-weight: 600;
+      transition: 0.25s;
+    }
+    body.dark .btn-outline-light-custom {
+      border-color: #b0c8ff;
+      color: #b0c8ff;
+    }
+    .btn-outline-light-custom:hover {
+      background: #1a3b6b;
+      color: white;
+      transform: translateY(-3px);
+    }
+    .typing-text {
+      font-weight: 700;
+      color: #0f2b50;
+      border-right: 3px solid #0f2b50;
+      padding-right: 6px;
+      white-space: nowrap;
+      overflow: hidden;
+      display: inline-block;
+    }
+    body.dark .typing-text { color: #b8ceff; border-color: #b8ceff; }
+
+    .section-title {
+      font-weight: 800;
+      font-size: 2.3rem;
+      letter-spacing: -0.5px;
+      position: relative;
+      display: inline-block;
+    }
+    .section-title::after {
+      content: '';
+      width: 50px;
+      height: 4px;
+      background: linear-gradient(90deg, #1a3b6b, #5f8bdb);
+      position: absolute;
+      bottom: -10px;
+      left: 0;
+      border-radius: 4px;
+    }
+    .glass, .card, .skill-card, .cert-card, .project-card {
+      background: rgba(255,255,255,0.6);
+      backdrop-filter: blur(6px);
+      border: 1px solid rgba(255,255,255,0.5);
+      border-radius: 28px;
+      padding: 1.8rem 1.5rem;
+      box-shadow: 0 15px 35px rgba(0, 20, 40, 0.06);
+      transition: 0.3s;
+      height: 100%;
+    }
+    .glass:hover { transform: translateY(-6px); box-shadow: 0 25px 45px rgba(0,20,40,0.08); }
+    .skill-progress {
+      height: 10px;
+      border-radius: 20px;
+      background: rgba(0,0,0,0.05);
+      margin-top: 6px;
+      overflow: hidden;
+    }
+    .skill-progress-bar {
+      height: 100%;
+      border-radius: 20px;
+      background: linear-gradient(90deg, #1f4a7a, #4a7ec7);
+      width: 0%;
+      transition: width 1.2s ease;
+    }
+    .project-card {
+      border-radius: 30px;
+      overflow: hidden;
+      background: rgba(255,255,255,0.5);
+      border: 1px solid rgba(255,255,255,0.6);
+    }
+    .project-card:hover { transform: scale(1.01) translateY(-6px); }
+    .cert-card i { font-size: 2.8rem; color: #1f4a7a; }
+    body.dark .cert-card i { color: #7aa9ff; }
+    .contact-icon { font-size: 1.8rem; color: #1a3b6b; }
+    body.dark .contact-icon { color: #9bbaff; }
+    footer {
+      background: #0b1a2e;
+      color: #bcc9e6;
+      border-top: 1px solid #1f3450;
+    }
+    .scroll-top {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      background: #1a3b6b;
+      color: white;
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.5rem;
+      cursor: pointer;
+      z-index: 999;
+      opacity: 0;
+      transition: 0.3s;
+      box-shadow: 0 6px 18px rgba(0,0,0,0.2);
+    }
+    .scroll-top.show { opacity: 1; }
+    .scroll-top:hover { background: #2a4f82; transform: scale(1.06); }
+    .dark-toggle {
+      background: transparent;
+      border: none;
+      font-size: 1.6rem;
+      color: #1a2639;
+      margin-left: 12px;
+    }
+    body.dark .dark-toggle { color: #cdd9f0; }
+    .badge-soft { background: rgba(26, 59, 107, 0.08); padding: 6px 16px; border-radius: 40px; font-weight: 500; }
+    body.dark .badge-soft { background: rgba(70, 120, 220, 0.15); color: #b0c8ff; }
+    .timeline-dot {
+      width: 14px;
+      height: 14px;
+      background: #1f4a7a;
+      border-radius: 50%;
+      display: inline-block;
+    }
+    @media (max-width: 768px) {
+      .hero-gradient { padding: 60px 0 40px; }
+      .profile-img { width: 130px; height: 130px; }
+      .section-title { font-size: 1.8rem; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="navbar navbar-expand-lg nav-bar fixed-top py-3">
+  <div class="container">
+    <span class="navbar-brand fw-bold fs-4" style="color:#0f2b50;">EL.</span>
+    <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav ms-auto align-items-lg-center gap-1">
+        <li class="nav-item"><a href="#home" class="nav-link">Home</a></li>
+        <li class="nav-item"><a href="#about" class="nav-link">About</a></li>
+        <li class="nav-item"><a href="#education" class="nav-link">Education</a></li>
+        <li class="nav-item"><a href="#skills" class="nav-link">Skills</a></li>
+        <li class="nav-item"><a href="#projects" class="nav-link">Projects</a></li>
+        <li class="nav-item"><a href="#experience" class="nav-link">Experience</a></li>
+        <li class="nav-item"><a href="#certifications" class="nav-link">Certifications</a></li>
+        <li class="nav-item"><a href="#achievements" class="nav-link">Achievements</a></li>
+        <li class="nav-item"><a href="#contact" class="nav-link">Contact</a></li>
+        <li><button class="dark-toggle" id="darkToggle" aria-label="Toggle dark mode"><i class="bi bi-moon-stars"></i></button></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section id="home" class="hero-gradient" style="padding-top: 110px;">
+  <div class="container text-center text-md-start">
+    <div class="row align-items-center g-5">
+      <div class="col-md-7 order-2 order-md-1" data-aos="fade-right">
+        <span class="badge-soft mb-2 d-inline-block">👋 Welcome</span>
+        <h1 class="display-4 fw-bold" style="color:#0a1f3b;">EMAN LIAQAT</h1>
+        <h2 class="fs-3 fw-light mb-2" style="color:#1e3e6b;">BSCS Graduate</h2>
+        <div class="fs-4 fw-semibold mb-3" style="color:#16345c;">
+          <span class="typing-text" id="typingText"></span>
+        </div>
+        <p class="lead mb-4" style="color:#1d3557; max-width: 500px;">Aspiring Software Engineer · AI & Web Developer</p>
+        <div class="d-flex flex-wrap gap-3">
+          <a href="#" class="btn btn-grad"><i class="bi bi-download me-2"></i>Download CV</a>
+          <a href="#contact" class="btn btn-outline-light-custom"><i class="bi bi-chat-dots me-2"></i>Hire Me</a>
+        </div>
+      </div>
+      <div class="col-md-5 order-1 order-md-2 text-center" data-aos="fade-left">
+        <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='45' fill='%23d4e0fa'/%3E%3Ccircle cx='50' cy='40' r='20' fill='%23a0bce0'/%3E%3Cpath d='M25 75 Q50 90 75 75' stroke='%235f7ab0' stroke-width='6' fill='none' /%3E%3C/svg%3E" alt="Eman Liaqat" class="profile-img">
+        <p class="mt-3 fw-light text-muted" style="font-size: 0.95rem;">✨ AI & Web Developer</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about" class="py-5" style="background: rgba(255,255,255,0.2);">
+  <div class="container" data-aos="fade-up">
+    <h2 class="section-title mb-5">About</h2>
+    <div class="row g-4">
+      <div class="col-lg-8">
+        <div class="glass p-4">
+          <p class="fs-5" style="font-weight: 400; line-height: 1.8;">I am a motivated and hardworking BSCS graduate with a strong passion for Artificial Intelligence, Software Development, and Web Technologies. I enjoy solving real-world problems through technology and continuously learning new skills.</p>
+          <div class="d-flex flex-wrap gap-3 mt-3">
+            <span><i class="bi bi-geo-alt-fill me-1" style="color:#1a3b6b;"></i> Gujranwala, Pakistan</span>
+            <span><i class="bi bi-envelope-fill me-1" style="color:#1a3b6b;"></i> emanbhatti906@gmail.com</span>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-4">
+        <div class="glass p-4 text-center">
+          <i class="bi bi-person-circle" style="font-size: 3.5rem; color: #1a3b6b;"></i>
+          <h5 class="mt-2">BSCS · AI & Web</h5>
+          <p class="small text-muted">University of Gujrat</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EDUCATION -->
+<section id="education" class="py-5">
+  <div class="container" data-aos="fade-up">
+    <h2 class="section-title mb-5">Education</h2>
+    <div class="row g-4">
+      <div class="col-md-4"><div class="glass"><span class="timeline-dot me-2"></span><h5>BS Computer Science</h5><p class="mb-1">University of Gujrat</p><span class="badge bg-success bg-opacity-25 text-success">Completed</span></div></div>
+      <div class="col-md-4"><div class="glass"><span class="timeline-dot me-2"></span><h5>F.Sc Pre-Engineering</h5><p>BISE Gujranwala · 910/1100 (82.73%)</p></div></div>
+      <div class="col-md-4"><div class="glass"><span class="timeline-dot me-2"></span><h5>Matric Science</h5><p>BISE Gujranwala · 957/1100 (87%)</p></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills" class="py-5" style="background: rgba(0,20,50,0.02);">
+  <div class="container" data-aos="fade-up">
+    <h2 class="section-title mb-5">Skills</h2>
+    <div class="row g-4">
+      <div class="col-md-6"><div class="glass"><h5 class="mb-3"><i class="bi bi-code-square me-2"></i>Technical</h5>
+        <div>HTML <span class="float-end">90%</span><div class="skill-progress"><div class="skill-progress-bar" style="width:90%"></div></div></div>
+        <div>CSS <span class="float-end">85%</span><div class="skill-progress"><div class="skill-progress-bar" style="width:85%"></div></div></div>
+        <div>JavaScript <span class="float-end">78%</span><div class="skill-progress"><div class="skill-progress-bar" style="width:78%"></div></div></div>
+        <div>Bootstrap <span class="float-end">80%</span><div class="skill-progress"><div class="skill-progress-bar" style="width:80%"></div></div></div>
+        <div>React <span class="float-end">70%</span><div class="skill-progress"><div class="skill-progress-bar" style="width:70%"></div></div></div>
+        <div>Python <span class="float-end">75%</span><div class="skill-progress"><div class="skill-progress-bar" style="width:75%"></div></div></div>
+        <div>C++ <span class="float-end">68%</span><div class="skill-progress"><div class="skill-progress-bar" style="width:68%"></div></div></div>
+        <div>SQL <span class="float-end">72%</span><div class="skill-progress"><div class="skill-progress-bar" style="width:72%"></div></div></div>
+        <div>AI / ML <span class="float-end">65%</span><div class="skill-progress"><div class="skill-progress-bar" style="width:65%"></div></div></div>
+        <div class="mt-2">MS Word · Excel · PowerPoint</div>
+      </div></div>
+      <div class="col-md-6"><div class="glass"><h5 class="mb-3"><i class="bi bi-people me-2"></i>Soft Skills</h5>
+        <div class="d-flex flex-wrap gap-2"><span class="badge-soft">Communication</span><span class="badge-soft">Teamwork</span><span class="badge-soft">Problem Solving</span><span class="badge-soft">Time Management</span><span class="badge-soft">Leadership</span></div>
+      </div></div>
+    </div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects" class="py-5">
+  <div class="container" data-aos="fade-up">
+    <h2 class="section-title mb-5">Projects</h2>
+    <div class="row g-4">
+      <div class="col-lg-6"><div class="project-card p-4"><h4><i class="bi bi-robot me-2"></i>AI Cheating Detection</h4><p>Developed an AI-based system that detects cheating during examinations using computer vision and machine learning. Monitors behavior, detects suspicious activities, generates reports.</p><div><a href="#" class="btn btn-sm btn-grad me-2">Live Demo</a><a href="#" class="btn btn-sm btn-outline-light-custom">GitHub</a></div></div></div>
+      <div class="col-lg-6"><div class="project-card p-4"><h4><i class="bi bi-code-slash me-2"></i>Portfolio Website</h4><p>Modern responsive portfolio using HTML, CSS, Bootstrap, AOS animations, dark mode, and glassmorphism. Showcases projects, skills, and experience.</p><div><a href="#" class="btn btn-sm btn-grad me-2">Live Demo</a><a href="#" class="btn btn-sm btn-outline-light-custom">GitHub</a></div></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- EXPERIENCE + CERTIFICATIONS + ACHIEVEMENTS in grid -->
+<section id="experience" class="py-5" style="background: rgba(0,20,50,0.02);">
+  <div class="container" data-aos="fade-up">
+    <div class="row g-4">
+      <div class="col-md-4"><h3 class="section-title fs-4 mb-3">Experience</h3><div class="glass"><span class="timeline-dot me-2"></span><strong>6 Months Professional Training</strong><p>Hands-on Web Development & practical AI project development.</p></div></div>
+      <div id="certifications" class="col-md-4"><h3 class="section-title fs-4 mb-3">Certifications</h3><div class="glass"><i class="bi bi-patch-check me-2"></i>Advanced Web Development<br><i class="bi bi-file-earmark-word me-2"></i>Microsoft Word · Excel · PowerPoint</div></div>
+      <div id="achievements" class="col-md-4"><h3 class="section-title fs-4 mb-3">Achievements</h3><div class="glass"><span class="badge-soft d-inline-block mb-1">Quick Learner</span> <span class="badge-soft">Dedicated Professional</span> <span class="badge-soft">Strong Communication</span> <span class="badge-soft">Team Player</span> <span class="badge-soft">Passionate about AI</span></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact" class="py-5">
+  <div class="container" data-aos="fade-up">
+    <h2 class="section-title mb-5">Contact</h2>
+    <div class="row g-4">
+      <div class="col-md-6"><div class="glass"><i class="bi bi-phone contact-icon me-2"></i> 03160776263<br><i class="bi bi-envelope contact-icon me-2"></i> emanbhatti906@gmail.com<br><i class="bi bi-geo-alt contact-icon me-2"></i> Aroop, Gujranwala, Pakistan<br><div class="mt-3"><a href="#" class="me-3 text-decoration-none" style="color:#1a3b6b;"><i class="bi bi-linkedin fs-3"></i></a><a href="#" class="text-decoration-none" style="color:#1a3b6b;"><i class="bi bi-github fs-3"></i></a></div></div></div>
+      <div class="col-md-6"><div class="glass"><h5>Send a message</h5><form><div class="mb-3"><input type="text" class="form-control" placeholder="Name"></div><div class="mb-3"><input type="email" class="form-control" placeholder="Email"></div><div class="mb-3"><textarea rows="3" class="form-control" placeholder="Message"></textarea></div><button class="btn btn-grad w-100">Send</button></form></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="py-4 mt-4">
+  <div class="container text-center">
+    <div class="mb-2"><a href="#" class="text-white-50 me-3"><i class="bi bi-linkedin fs-5"></i></a><a href="#" class="text-white-50 me-3"><i class="bi bi-github fs-5"></i></a><a href="#" class="text-white-50"><i class="bi bi-twitter fs-5"></i></a></div>
+    <p class="small mb-0">© 2026 Designed by Eman Liaqat</p>
+  </div>
+</footer>
+
+<!-- scroll top -->
+<div class="scroll-top" id="scrollTopBtn"><i class="bi bi-arrow-up"></i></div>
+
+<!-- scripts -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script>
+  AOS.init({ duration: 800, once: true, offset: 40 });
+  // typing
+  const roles = ["Aspiring Software Engineer", "AI & Web Developer", "BSCS Graduate"];
+  let idx = 0, charIdx = 0, isDeleting = false;
+  const el = document.getElementById("typingText");
+  function typeEffect() {
+    const current = roles[idx];
+    if (!isDeleting) {
+      el.textContent = current.substring(0, charIdx+1);
+      charIdx++;
+      if (charIdx === current.length) { isDeleting = true; setTimeout(typeEffect, 2000); return; }
+    } else {
+      el.textContent = current.substring(0, charIdx-1);
+      charIdx--;
+      if (charIdx === 0) { isDeleting = false; idx = (idx+1)%roles.length; setTimeout(typeEffect, 500); return; }
+    }
+    setTimeout(typeEffect, isDeleting ? 50 : 100);
+  }
+  typeEffect();
+
+  // dark mode
+  const toggle = document.getElementById("darkToggle");
+  toggle.addEventListener("click", ()=>{
+    document.body.classList.toggle("dark");
+    toggle.innerHTML = document.body.classList.contains("dark") ? '<i class="bi bi-sun"></i>' : '<i class="bi bi-moon-stars"></i>';
+  });
+
+  // scroll top
+  const topBtn = document.getElementById("scrollTopBtn");
+  window.addEventListener("scroll", ()=>{
+    if(window.scrollY > 400) topBtn.classList.add("show"); else topBtn.classList.remove("show");
+  });
+  topBtn.addEventListener("click", ()=> window.scrollTo({top:0, behavior:"smooth"}));
+
+  // animate skill bars on scroll (simple)
+  const bars = document.querySelectorAll(".skill-progress-bar");
+  const observer = new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{ if(e.isIntersecting){ e.target.style.width = e.target.style.width || "70%"; }});
+  }, {threshold:0.5});
+  bars.forEach(b=>observer.observe(b));
+</script>
+</body>
+</html>
